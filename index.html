@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project: Rock Paper Scissors</title>
+</head>
+
+<script>
+
+    function computerPlay() {
+        const choicesArray = ['Rock', 'Paper', 'Scissors'];
+        let play = Math.floor(Math.random()*choicesArray.length);
+        return choicesArray[play];
+    }
+    
+    function game(){
+        var playerScore = 0;
+        var computerScore = 0;
+
+        for (var i = 0; i < 5; i++) {
+
+            function getPlayerInput() {
+                var input = prompt('Rock, Paper, Scissors');
+                input = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+
+                if (input != 'Rock' && input != 'Paper' && input != 'Scissors') {
+                    alert('Invalid');
+                }
+                return input;
+            }
+            
+            playRound(getPlayerInput(),computerPlay());
+
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === computerSelection) {
+                    console.log('It\'s a tie');
+                }
+                if (playerSelection === 'Rock') {
+                    if(computerSelection === 'Scissors') {
+                        playerScore++;
+                        console.log('You Win! Rock beats Scissors.');
+                    } 
+                    else {
+                        computerScore++;
+                        console.log('You lose! Paper beats Rock.');
+                    }
+                }
+                if (playerSelection === 'Paper') {
+                    if (computerSelection === 'Rock') {
+                        playerScore++;
+                        console.log('You Win! Paper beats Rock.');
+                    }
+                    else {
+                        computerScore++;
+                        console.log('You Lose! Scissors beats Paper.');
+                    }
+                }
+                if (playerSelection === 'Scissors') {
+                    if (computerSelection === 'Paper') {
+                        playerScore++;
+                        console.log('You Win! Scissors beats Paper.');
+                    }
+                    else {
+                        computerScore++;
+                        console.log('You Lose! Rock beats Scissors.');
+                    }
+                }
+                }
+            console.log('Player Score: ' +playerScore);
+            console.log('Computer Score: ' +computerScore);
+            var count = (i + 1);
+            console.log('Round: ' +count);
+            
+        }        
+        return (playerScore > computerScore) ? 'You won the game!' : 'You lost the game!';
+    }
+
+        
+    console.log(game());
+
+</script>
+
+
+<body>
+</body>
+</html>
